@@ -1,5 +1,20 @@
-## Put comments here that give an overall description of what your
-## functions do
+#The implementations below contains a pair of functions used for computing and caching (store for reuse) the inverse
+#of a matrix.
+#The function are set to only work with matrices with computable inverses - this means, providing a matrix which has no
+#inverse will fail to compute and will produce a message stating so.
+
+#Here is an easy way of calling/invoking the functions:
+# 1. Define your matrix:
+# myMatrix <- matrix( c(5, 1, 0,
+#                       3,-1, 2,
+#                       4, 0,-1), nrow=3, byrow=TRUE)
+
+# 2. invoke the funtion to compute and cahce the inverse for reuse:
+#    myMatrixObj <- makeCacheMatrix(myMatrix)
+
+# 3. call the 2nd function to read the cached value of the matrix-inverse:
+#    cacheSolve(myMatrixObj)
+
 
 ## This function creates a special "matrix" object that is used for caching the inverse of the matrix input.
 ## It checks for a valid matrix with an inverse before computing and caching the inverse value
@@ -29,7 +44,6 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
   ## Return a matrix that is the inverse of 'x'
-  print(x)
   cachedInverse <- x$getCache()
   if(!is.null(cachedInverse)) {
     message("getting cached data")
